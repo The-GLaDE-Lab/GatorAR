@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 4780328293769672490
+  m_GuidHigh: 12683343656893073304
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5598103166322296984
+      m_GuidHigh: 508457415444903071
+    m_SerializedTextureGuid:
+      m_GuidLow: 17880493348991805282
+      m_GuidHigh: 1928372291841791163
+    m_Size: {x: 0.254, y: 0.16891992}
+    m_SpecifySize: 1
+    m_Name: Rafflesia
+    m_Texture: {fileID: 2800000, guid: 4b64276245f7f824bb94efe961f4c21a, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5708897340703683865
+      m_GuidHigh: 14383394987124919462
+    m_SerializedTextureGuid:
+      m_GuidLow: 16763688139452430185
+      m_GuidHigh: 4159217052126778712
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Logo
+    m_Texture: {fileID: 2800000, guid: 857db769958be8a45895c357df81b839, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5559805680713318289
+      m_GuidHigh: 10714204101816836748
+    m_SerializedTextureGuid:
+      m_GuidLow: 1167736916274687024
+      m_GuidHigh: 209921908478373610
+    m_Size: {x: 0.104775, y: 0.104775}
+    m_SpecifySize: 1
+    m_Name: QRCode
+    m_Texture: {fileID: 2800000, guid: d5a9ac30a2891034eaee6c11ddcae902, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5119922247868172689
+      m_GuidHigh: 14650854818360301995
+    m_SerializedTextureGuid:
+      m_GuidLow: 3036743414231821625
+      m_GuidHigh: 6581455266555253499
+    m_Size: {x: 0.16404167, y: 0.079375}
+    m_SpecifySize: 1
+    m_Name: Pipes
+    m_Texture: {fileID: 2800000, guid: bf4b6d39ae0b2a24fb5226e4b106565b, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4697799056706605142
+      m_GuidHigh: 887041960203696772
+    m_SerializedTextureGuid:
+      m_GuidLow: 13755351759793585049
+      m_GuidHigh: 15378205578780084169
+    m_Size: {x: 0.034395833, y: 0.052916665}
+    m_SpecifySize: 1
+    m_Name: JackHearts
+    m_Texture: {fileID: 2800000, guid: eb0a7b99d38bbee4c9071e267f5c6ad5, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4755497443011446814
+      m_GuidHigh: 9961530276565740178
+    m_SerializedTextureGuid:
+      m_GuidLow: 17966118727843004210
+      m_GuidHigh: 9411201955786000635
+    m_Size: {x: 0.34395835, y: 0.23944792}
+    m_SpecifySize: 1
+    m_Name: Zebra
+    m_Texture: {fileID: 2800000, guid: 5d933f3279cbf954fb0816ec504e9b82, type: 3}
