@@ -4,11 +4,20 @@ This AR application displays virtual models and real time data when an image is 
 The app is intended to lay the groundwork for education use at the University of Florida.
 # Getting Started
 
+### Project Settings
+
 **Make sure you are using Unity version 2020.2.7f1.**
 
 Install Android and/or iOS Build Support for the target Unity version.
 
-Then:
+Package Versions:
+
+- ARFoundation: 4.1.5
+- ARCore XR Plugin: 4.1.5
+- ARKit XR Plugin: 4.1.5
+- XR Plugin Management: 4.0.1
+
+### Building Project
 
 1. Clone the repository to your local machine
 
@@ -22,7 +31,7 @@ To see the UI rendered as it would look on a phone, select the Game tab and chan
 
 # Deploying on Mobile Devices
 
-## Android
+### Android
 
 1. After cloning and rebuilding project, go to File -> Build Settings
 
@@ -38,7 +47,7 @@ To see the UI rendered as it would look on a phone, select the Game tab and chan
    
 6. Select Build And Run and the app will run on your Android device
 
-## iPhone
+### iPhone
 
 1. After cloning and rebuilding project, go to File -> Build Settings
 
