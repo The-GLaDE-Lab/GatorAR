@@ -6,7 +6,7 @@ The app is intended to lay the groundwork for education use at the University of
 
 ### Project Settings
 
-**Make sure you are using Unity version 2020.2.7f1.**
+Make sure you are using Unity version **2020.2.7f1.**
 
 Install Android and/or iOS Build Support for the target Unity version.
 
