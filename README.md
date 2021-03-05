@@ -3,6 +3,13 @@ This AR application displays virtual models and real time data when an image is 
 
 The app is intended to lay the groundwork for education use at the University of Florida.
 # Getting Started
+
+**Make sure you are using Unity version 2020.2.7f1.**
+
+Install Android and/or iOS Build Support for the target Unity version.
+
+Then:
+
 1. Clone the repository to your local machine
 
 2. Open the project using Unity
@@ -10,6 +17,8 @@ The app is intended to lay the groundwork for education use at the University of
 3. Unity will rebuild the project and add any missing files needed to run
 
 4. Select ARScene under Assets -> Demo -> Scenes to view project
+
+To see the UI rendered as it would look on a phone, select the Game tab and change the Free Aspect drop down to 1920x1080 Portrait.
 
 # Deploying on Mobile Devices
 
