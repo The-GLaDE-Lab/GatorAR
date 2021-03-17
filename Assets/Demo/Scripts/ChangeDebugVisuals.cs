@@ -13,7 +13,7 @@ public class ChangeDebugVisuals : MonoBehaviour
     {
         aRSessionOrigin = FindObjectOfType<ARSessionOrigin>();
         aRPointCloudManager = aRSessionOrigin.GetComponent<ARPointCloudManager>();
-
+        
         aRPointCloudManager.SetTrackablesActive(false);
         aRPointCloudManager.enabled = false;
     }

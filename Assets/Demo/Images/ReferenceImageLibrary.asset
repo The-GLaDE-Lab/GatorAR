@@ -75,3 +75,13 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: Zebra
     m_Texture: {fileID: 2800000, guid: 5d933f3279cbf954fb0816ec504e9b82, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5702502879082554835
+      m_GuidHigh: 2595307704632600764
+    m_SerializedTextureGuid:
+      m_GuidLow: 16486584012065799043
+      m_GuidHigh: 16553679034614514457
+    m_Size: {x: 0.189738, y: 0.189738}
+    m_SpecifySize: 1
+    m_Name: BOILER QR
+    m_Texture: {fileID: 2800000, guid: 2ed0fb831ccfe4cc19830778607bbae5, type: 3}
