@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
 public class TapToShowChecklist : MonoBehaviour
 {
+    [SerializeField]
+    private Text debugLog;
+
     public GameObject objectToPlace;
 
-    private ARRaycastManager raycastManager;
+    //private ARRaycastManager raycastManager;
     private GameObject boilerObject;
 
     // Start is called before the first frame update
     void Start()
     {
-        raycastManager = FindObjectOfType<ARRaycastManager>();
+        //raycastManager = FindObjectOfType<ARRaycastManager>();
     }
 
     // Update is called once per frame
@@ -27,19 +31,25 @@ public class TapToShowChecklist : MonoBehaviour
 
             if (Physics.Raycast(rayCast, out raycastHit))
             {
+                string name = raycastHit.transform.name;
+
+                debugLog.text += "\n" + name;
+
                 if (raycastHit.collider.CompareTag("Boiler"))
                 {
-                    Transform boilerTransform = raycastHit.transform;
+                    debugLog.text += "\nInside Tag Hit";
 
                     if (boilerObject == null)
                     {
+                        debugLog.text += "\nInside BoilerObject == Null";
                         Vector3 cameraForward = Camera.current.transform.forward;
                         Vector3 cameraBearing = new Vector3(cameraForward.x, 0, cameraForward.z).normalized;
-                        
-                        boilerTransform.rotation = Quaternion.LookRotation(cameraBearing);
-                        boilerTransform.position = new Vector3(boilerTransform.position.x, boilerTransform.position.y + 2, boilerTransform.position.z);
 
-                        boilerObject = Instantiate(objectToPlace, boilerTransform.position, boilerTransform.rotation);
+                        Quaternion boilerRotation = Quaternion.LookRotation(cameraBearing);
+                        Vector3 boilerPosition = raycastHit.transform.position;
+                        boilerPosition.y += 5;
+
+                        boilerObject = Instantiate(objectToPlace, boilerPosition, boilerRotation);
                         boilerObject.AddComponent<ARAnchor>();
                     }
                 }
