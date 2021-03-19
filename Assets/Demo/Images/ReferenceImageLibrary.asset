@@ -75,3 +75,13 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: Zebra
     m_Texture: {fileID: 2800000, guid: 5d933f3279cbf954fb0816ec504e9b82, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5540453410999408347
+      m_GuidHigh: 4069716154086352013
+    m_SerializedTextureGuid:
+      m_GuidLow: 6819796136871879616
+      m_GuidHigh: 2938994735290743515
+    m_Size: {x: 0.2032, y: 0.2032}
+    m_SpecifySize: 1
+    m_Name: TabletopQR
+    m_Texture: {fileID: 2800000, guid: 22d463c0c8745ea4db7abfe92368c928, type: 3}
