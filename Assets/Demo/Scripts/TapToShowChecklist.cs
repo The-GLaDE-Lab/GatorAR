@@ -7,18 +7,17 @@ using UnityEngine.XR.ARSubsystems;
 
 public class TapToShowChecklist : MonoBehaviour
 {
-    [SerializeField]
-    private Text debugLog;
-
     public GameObject objectToPlace;
 
     //private ARRaycastManager raycastManager;
     private GameObject boilerObject;
+    private Text debugLog;
 
     // Start is called before the first frame update
     void Start()
     {
         //raycastManager = FindObjectOfType<ARRaycastManager>();
+        debugLog = GameObject.Find("DebugText").GetComponent<Text>();
     }
 
     // Update is called once per frame
