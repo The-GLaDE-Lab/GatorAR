@@ -46,6 +46,10 @@ namespace UnityEngine.XR.ARFoundation.Samples
         [Tooltip("Reference Image Library")]
         XRReferenceImageLibrary m_ImageLibrary;
 
+        private Text debugLog;
+        private const string plantID = "d13896db-a505-4ce3-8d64-fca447897a38";
+        Guid plantGuid;
+
         /// <summary>
         /// Get the <c>XRReferenceImageLibrary</c>
         /// </summary>
@@ -76,6 +80,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
         void Awake()
         {
             m_TrackedImageManager = GetComponent<ARTrackedImageManager>();
+            debugLog = GameObject.Find("DebugText").GetComponent<Text>();
+            plantGuid = new Guid(plantID);
         }
 
         void OnEnable()
@@ -92,17 +98,55 @@ namespace UnityEngine.XR.ARFoundation.Samples
         {
             foreach (var trackedImage in eventArgs.added)
             {
-                // Give the initial image a reasonable default scale
                 var minLocalScalar = Mathf.Min(trackedImage.size.x, trackedImage.size.y) / 2;
                 trackedImage.transform.localScale = new Vector3(minLocalScalar, minLocalScalar, minLocalScalar);
+
                 AssignPrefab(trackedImage);
+            }
+
+            foreach (var trackedImage in eventArgs.updated)
+            {
+                var gameObj = m_Instantiated[trackedImage.referenceImage.guid].transform.gameObject;
+
+                if (trackedImage.referenceImage.guid != plantGuid)
+                {
+                    // image is tracking or tracking with limited state, show visuals and update it's position and rotation
+                    if (trackedImage.trackingState == TrackingState.Tracking)
+                    {
+                        gameObj.SetActive(true);
+                        gameObj.transform.SetPositionAndRotation(trackedImage.transform.position, trackedImage.transform.rotation);
+
+                    }
+                    // image is no longer tracking, disable visuals TrackingState.Limited TrackingState.None
+                    else
+                    {
+                        gameObj.SetActive(false);
+                    }
+                }
+            }
+
+            foreach (var trackedImage in eventArgs.removed)
+            {
+                var gameObj = m_Instantiated[trackedImage.referenceImage.guid].transform.gameObject;
+
+                Destroy(gameObj);
             }
         }
 
         void AssignPrefab(ARTrackedImage trackedImage)
         {
             if (m_PrefabsDictionary.TryGetValue(trackedImage.referenceImage.guid, out var prefab))
+            {
                 m_Instantiated[trackedImage.referenceImage.guid] = Instantiate(prefab, trackedImage.transform);
+
+                if (trackedImage.referenceImage.guid == plantGuid)
+                {
+                    Vector3 curPosition = m_Instantiated[trackedImage.referenceImage.guid].transform.position;
+                    Vector3 newPosition = new Vector3(curPosition.x += .5f, curPosition.y, curPosition.z);
+                    m_Instantiated[trackedImage.referenceImage.guid].transform.position = newPosition;
+                }
+
+            }
         }
 
         public GameObject GetPrefabForReferenceImage(XRReferenceImage referenceImage)

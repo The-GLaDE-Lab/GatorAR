@@ -34,7 +34,7 @@ public class PlantModelInteraction : MonoBehaviour
             {
                 string name = raycastHit.transform.name;
 
-                debugLog.text += "\n" + name;
+                debugLog.text = "\n" + name;
 
                 GetCameraView();
 
@@ -54,18 +54,24 @@ public class PlantModelInteraction : MonoBehaviour
                         boilerObject.AddComponent<ARAnchor>();
                     }
                 }
-                else if (raycastHit.collider.CompareTag("Roof"))
+                else if (raycastHit.collider.CompareTag("Start Text"))
                 {
                     if (roofObject == null)
                     {
                         debugLog.text += "\nInside RoofObject == Null";
 
-                        hitPosition.y += 2;
-                        hitPosition.z += 2;
+                        hitPosition.y += 0.5f;
+                        //hitPosition.z += 0.5f;
 
                         roofObject = Instantiate(canvasToPlace, hitPosition, currentRotation);
                         roofObject.AddComponent<ARAnchor>();
+
+                        Destroy(raycastHit.transform.gameObject);
                     }
+                }
+                else if (raycastHit.collider.CompareTag("Roof"))
+                {
+
                 }
             }
         }
