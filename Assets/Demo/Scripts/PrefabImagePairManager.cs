@@ -48,7 +48,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         private Text debugLog;
         private const string plantID = "d13896db-a505-4ce3-8d64-fca447897a38";
-        Guid plantGuid;
+        private Guid plantGuid;
 
         /// <summary>
         /// Get the <c>XRReferenceImageLibrary</c>
@@ -114,7 +114,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
                     if (trackedImage.trackingState == TrackingState.Tracking)
                     {
                         gameObj.SetActive(true);
-                        gameObj.transform.SetPositionAndRotation(trackedImage.transform.position, trackedImage.transform.rotation);
+                        gameObj.transform.position = trackedImage.transform.position;
+                        //gameObj.transform.SetPositionAndRotation(trackedImage.transform.position, trackedImage.transform.rotation);
 
                     }
                     // image is no longer tracking, disable visuals TrackingState.Limited TrackingState.None

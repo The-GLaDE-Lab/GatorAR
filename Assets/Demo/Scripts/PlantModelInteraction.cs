@@ -9,8 +9,7 @@ public class PlantModelInteraction : MonoBehaviour
 {
     public GameObject objectToPlace, canvasToPlace;
 
-    //private ARRaycastManager raycastManager;
-    private GameObject boilerObject, roofObject;
+    private GameObject boilerObject, checklistObject, uiObject;
     private Text debugLog;
     private Vector3 cameraForward, cameraBearing, hitPosition;
     private Quaternion currentRotation;
@@ -18,8 +17,9 @@ public class PlantModelInteraction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //raycastManager = FindObjectOfType<ARRaycastManager>();
         debugLog = GameObject.Find("DebugText").GetComponent<Text>();
+        checklistObject = GameObject.Find("ChecklistParent").transform.GetChild(0).gameObject;
+        uiObject = GameObject.Find("UIParent").transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -48,7 +48,7 @@ public class PlantModelInteraction : MonoBehaviour
                     {
                         debugLog.text += "\nInside BoilerObject == Null";
 
-                        hitPosition.y += 1;
+                        hitPosition.y += .5f;
 
                         boilerObject = Instantiate(objectToPlace, hitPosition, currentRotation);
                         boilerObject.AddComponent<ARAnchor>();
@@ -56,22 +56,23 @@ public class PlantModelInteraction : MonoBehaviour
                 }
                 else if (raycastHit.collider.CompareTag("Start Text"))
                 {
-                    if (roofObject == null)
-                    {
-                        debugLog.text += "\nInside RoofObject == Null";
+                    uiObject.SetActive(false);
+                    checklistObject.SetActive(true);
 
-                        hitPosition.y += 0.5f;
-                        //hitPosition.z += 0.5f;
+                    Destroy(raycastHit.transform.gameObject);
 
-                        roofObject = Instantiate(canvasToPlace, hitPosition, currentRotation);
-                        roofObject.AddComponent<ARAnchor>();
+                    //if (roofObject == null)
+                    //{
+                    //    debugLog.text += "\nInside RoofObject == Null";
 
-                        Destroy(raycastHit.transform.gameObject);
-                    }
-                }
-                else if (raycastHit.collider.CompareTag("Roof"))
-                {
+                    //    hitPosition.y += 0.5f;
+                    //    hitPosition.z += 0.25f;
 
+                    //    roofObject = Instantiate(canvasToPlace, hitPosition, currentRotation);
+                    //    roofObject.AddComponent<ARAnchor>();
+
+                    //    Destroy(raycastHit.transform.gameObject);
+                    //}
                 }
             }
         }

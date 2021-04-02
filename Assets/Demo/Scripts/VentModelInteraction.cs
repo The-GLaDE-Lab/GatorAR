@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class VentModelInteraction : MonoBehaviour
 {
     private Text debugLog;
+    private GameObject achievementPopup;
     private GameStateController gameStateScript;
 
     // Start is called before the first frame update
@@ -13,6 +14,7 @@ public class VentModelInteraction : MonoBehaviour
     {
         //raycastManager = FindObjectOfType<ARRaycastManager>();
         debugLog = GameObject.Find("DebugText").GetComponent<Text>();
+        achievementPopup = GameObject.Find("AchievementPopup").transform.GetChild(0).gameObject;
         gameStateScript = GameObject.Find("GameStateController").GetComponent<GameStateController>();
     }
 
@@ -33,6 +35,8 @@ public class VentModelInteraction : MonoBehaviour
                 if (raycastHit.collider.CompareTag("Vent"))
                 {
                     debugLog.text += "\nInside Vent Tag Hit";
+
+                    achievementPopup.SetActive(true);
 
                     gameStateScript.GameStateOne = true;
 
