@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Boiler
+  - Roof
+  - Vent
+  - Start Text
   layers:
   - Default
   - TransparentFX
