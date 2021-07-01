@@ -10,15 +10,6 @@ using UnityEngine.XR.ARSubsystems;
 
 public class ReferencePointManager : MonoBehaviour
 {
-    //[SerializeField]
-    //Text debugLog;
-
-    //[SerializeField]
-    //Text referencePointCount;
-
-    //[SerializeField]
-    //Button toggleButton;
-
     private ARRaycastManager aRRaycastManager;
     private ARAnchorManager aRAnchorManager;
 

@@ -80,7 +80,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
         void Awake()
         {
             m_TrackedImageManager = GetComponent<ARTrackedImageManager>();
-            debugLog = GameObject.Find("DebugText").GetComponent<Text>();
+            //debugLog = GameObject.Find("DebugText").GetComponent<Text>();
             plantGuid = new Guid(plantID);
         }
 
@@ -110,7 +110,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
                 if (trackedImage.referenceImage.guid != plantGuid)
                 {
-                    // image is tracking or tracking with limited state, show visuals and update it's position and rotation
+                    // image is tracking or tracking with limited state, show visuals and update its position
                     if (trackedImage.trackingState == TrackingState.Tracking)
                     {
                         gameObj.SetActive(true);
