@@ -1,34 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
+/// <summary>
+/// Class to manage the state of the Plant Model
+/// </summary>
 public class PlantModelState : MonoBehaviour
 {
-    public GameObject plantRoof;
+    [SerializeField]
+    GameObject plantRoof;
 
-    private GameStateController gameStateScript;
-    private bool GameStateOne, GameStateTwo;
-    private Text debugLog;
+    GameStateController gameStateScript;
+    DebugController debugLog;
+    bool gameStateOne, gameStateTwo;
 
     // Start is called before the first frame update
     void Start()
     {
         gameStateScript = GameObject.Find("GameStateController").GetComponent<GameStateController>();
-        debugLog = GameObject.Find("DebugText").GetComponent<Text>();
-        GameStateOne = false;
-        GameStateTwo = false;
+        debugLog = GameObject.Find("DebugController").GetComponent<DebugController>();
+        // Set initial state of the achievements to false
+        gameStateOne = false;
+        gameStateTwo = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        GameStateOne = gameStateScript.GameStateOne;
+        // Every frame, check if the Game State has changed (check if user gets achievement)
+        gameStateOne = gameStateScript.GameStateOne;
 
-        if (GameStateOne)
+        // If user gets achievement,
+        if (gameStateOne)
         {
-            debugLog.text = "GameStateOne = True";
-            debugLog.text += "\n PlantRoof SetActive = False";
+            debugLog.NewDebugText("GameStateOne = True");
+            debugLog.NewLineDebugText("PlantRoof SetActive = False");
+            // Remove the roof of the Plant Model so the user can see inside the next time they view it
             plantRoof.SetActive(false);
         }
     }

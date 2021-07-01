@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class to handle update the state of the checklist menu
+/// </summary>
 public class UpdateChecklistMenu : MonoBehaviour
 {
-    public Toggle firstTaskToggle, secondTaskToggle,
-                  thirdTaskToggle, fourthTaskToggle;
+    [SerializeField]
+    Toggle firstTaskToggle, secondTaskToggle,
+           thirdTaskToggle, fourthTaskToggle;
 
-    private GameStateController gameStateScript;
-    private bool GameStateOne;
+    GameStateController gameStateScript;
+    bool GameStateOne;
 
     void Start()
     {
@@ -19,10 +23,13 @@ public class UpdateChecklistMenu : MonoBehaviour
 
     void Update()
     {
+        // Every frame, check if game state has changed
         GameStateOne = gameStateScript.GameStateOne;
 
+        // If user gets achievement,
         if (GameStateOne)
         {
+            // Update checkmark on Checklist to be checked
             firstTaskToggle.isOn = true;
         }
     }

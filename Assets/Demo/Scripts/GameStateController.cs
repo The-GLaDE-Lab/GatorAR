@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
+/// <summary>
+/// Class to manage the current state of the game
+/// </summary>
 public class GameStateController : MonoBehaviour
 {
     public bool GameStateOne { get; set; }
     public bool GameStateTwo { get; set; }
 
-    private Text debugLog;
+    DebugController debugLog;
 
     void Start()
     {
-        debugLog = GameObject.Find("DebugText").GetComponent<Text>();
+        debugLog = GameObject.Find("DebugController").GetComponent<DebugController>();
+        
+        // Game state starts as false, becomes true when achievements completed
         GameStateOne = false;
         GameStateTwo = false;
     }
@@ -21,7 +23,7 @@ public class GameStateController : MonoBehaviour
     {
         if (GameStateOne)
         {
-            debugLog.text += "\n Inside Controller - GameStateOne = True";
+            debugLog.NewLineDebugText("Inside Controller - GameStateOne = True");
         }
     }
 
