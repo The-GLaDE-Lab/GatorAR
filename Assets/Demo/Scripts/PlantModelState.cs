@@ -5,36 +5,65 @@ using UnityEngine;
 /// </summary>
 public class PlantModelState : MonoBehaviour
 {
-    [SerializeField]
-    GameObject plantRoof;
+    [field: SerializeField] public GameObject Arrow { get; set; }
+    [field: SerializeField] public GameObject EntryInitial { get; set; }
+    [field: SerializeField] public GameObject EntryComplete { get; set; }
+    [field: SerializeField] public GameObject EntryRoof { get; set; }
+    [field: SerializeField] public GameObject EntryDoor { get; set; }
 
-    GameStateController gameStateScript;
-    DebugController debugLog;
-    bool gameStateOne, gameStateTwo;
+    GameStateController GameStateScript;
+    DebugController DebugLog;
+
+    public bool EntryRoofState { get; private set; }
+    public bool ChillerRoofState { get; private set; }
+    public bool BoilerRoofState { get; private set; }
 
     // Start is called before the first frame update
     void Start()
     {
-        gameStateScript = GameObject.Find("GameStateController").GetComponent<GameStateController>();
-        debugLog = GameObject.Find("DebugController").GetComponent<DebugController>();
-        // Set initial state of the achievements to false
-        gameStateOne = false;
-        gameStateTwo = false;
+        GameStateScript = GameObject.Find("GameStateController").GetComponent<GameStateController>();
+        DebugLog = GameObject.Find("DebugController").GetComponent<DebugController>();
+
+        EntryRoofState = true;
+        ChillerRoofState = true;
+        BoilerRoofState = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Every frame, check if the Game State has changed (check if user gets achievement)
-        gameStateOne = gameStateScript.GameStateOne;
-
-        // If user gets achievement,
-        if (gameStateOne)
+        if (!GameStateScript.EntryRoofTriggered)
         {
-            debugLog.NewDebugText("GameStateOne = True");
-            debugLog.NewLineDebugText("PlantRoof SetActive = False");
-            // Remove the roof of the Plant Model so the user can see inside the next time they view it
-            plantRoof.SetActive(false);
+            // If user gets first achievement,
+            if (GameStateScript.GameStateOne)
+            {
+                SetEntryRoofAchievementState();
+            }
         }
+        else
+        {
+            SetEntryRoofTriggeredState();
+        }
+    }
+
+    void SetEntryRoofAchievementState()
+    {
+        // Hide 0/1 text over roof
+        EntryInitial.SetActive(false);
+        // Display 1/1 text over roof
+        EntryComplete.SetActive(true);
+        // Display arrow pointing to roof
+        Arrow.SetActive(true);
+        // Set EntryRoofState to false to so user can remove roof
+        EntryRoofState = false;
+    }
+
+    void SetEntryRoofTriggeredState()
+    {
+        EntryRoof.SetActive(false);
+        EntryDoor.SetActive(false);
+        Arrow.SetActive(false);
+        EntryInitial.SetActive(false);
+        EntryComplete.SetActive(false);
     }
 }
