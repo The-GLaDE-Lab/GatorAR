@@ -2544,9 +2544,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4431084402279646}
-  - component: {fileID: 114253073084258262}
   - component: {fileID: 95320324289322388}
   - component: {fileID: 4097318250288317660}
+  - component: {fileID: 4901855193247653550}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -2574,18 +2574,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &114253073084258262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1528915638184230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdfe52ad0699f7842b1bd6f40aadd01e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &95320324289322388
 Animator:
   serializedVersion: 3
@@ -2622,6 +2610,18 @@ MonoBehaviour:
   ThirdFloatingText: {fileID: 5839979499955748898}
   FourthFloatingText: {fileID: 3789781605864171699}
   Book: {fileID: 8347698213523172213}
+--- !u!114 &4901855193247653550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528915638184230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc8c5da80ac708488ccec73954cae36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1533244445735912
 GameObject:
   m_ObjectHideFlags: 0
