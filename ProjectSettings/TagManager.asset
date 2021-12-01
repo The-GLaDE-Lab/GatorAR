@@ -5,9 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Boiler
-  - Roof
   - Vent
   - Start Text
+  - Schematics
+  - Entry Roof
+  - Boiler Roof
+  - Chiller Roof
+  - Roof
   layers:
   - Default
   - TransparentFX
