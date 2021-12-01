@@ -7,19 +7,22 @@ using UnityEngine.XR.ARFoundation;
 public class PlantModelInteraction : MonoBehaviour
 {
     [SerializeField]
-    GameObject objectToPlace, canvasToPlace;
+    GameObject objectToPlace;
 
+    [SerializeField]
+    PlantModelState PlantModelState;
+
+    GameStateController GameStateScript;
     DebugController debugLog;
-    GameObject boilerObject, checklistObject, uiObject;
+    GameObject boilerObject;
     Vector3 cameraForward, cameraBearing, hitPosition;
     Quaternion currentRotation;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameStateScript = GameObject.Find("GameStateController").GetComponent<GameStateController>();
         debugLog = GameObject.Find("DebugController").GetComponent<DebugController>();
-        checklistObject = GameObject.Find("ChecklistParent").transform.GetChild(0).gameObject;
-        uiObject = GameObject.Find("UIParent").transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -30,10 +33,9 @@ public class PlantModelInteraction : MonoBehaviour
         {
             // Perform raycast using position of touch on screen
             Ray rayCast = Camera.current.ScreenPointToRay(Input.GetTouch(0).position);
-            RaycastHit raycastHit;
 
             // Check if raycast hits object that has collider
-            if (Physics.Raycast(rayCast, out raycastHit))
+            if (Physics.Raycast(rayCast, out var raycastHit))
             {
                 // Get name of collider that has been hit
                 string name = raycastHit.transform.name;
@@ -64,29 +66,13 @@ public class PlantModelInteraction : MonoBehaviour
                         boilerObject.AddComponent<ARAnchor>();
                     }
                 }
-                else if (raycastHit.collider.CompareTag("Start Text"))
+                else if (raycastHit.collider.CompareTag("Entry Roof"))
                 {
-                    // If Start Text tapped on the initial view of the Plant Model,
-                    // deactivate the Start Text and display the Checklist to show users
-                    // he game objectives.
-                    uiObject.SetActive(false);
-                    checklistObject.SetActive(true);
-                    
-                    // Destroy the Start Text
-                    Destroy(raycastHit.transform.gameObject);
-
-                    //if (roofObject == null)
-                    //{
-                    //    debugLog.text += "\nInside RoofObject == Null";
-
-                    //    hitPosition.y += 0.5f;
-                    //    hitPosition.z += 0.25f;
-
-                    //    roofObject = Instantiate(canvasToPlace, hitPosition, currentRotation);
-                    //    roofObject.AddComponent<ARAnchor>();
-
-                    //    Destroy(raycastHit.transform.gameObject);
-                    //}
+                    // If Entry Roof is clicked on, check if EntryRoofState is false
+                    if (!PlantModelState.EntryRoofState)
+                    {
+                        GameStateScript.EntryRoofTriggered = true;
+                    }
                 }
             }
         }

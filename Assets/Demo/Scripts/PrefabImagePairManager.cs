@@ -47,8 +47,6 @@ namespace UnityEngine.XR.ARFoundation.Samples
         XRReferenceImageLibrary m_ImageLibrary;
 
         private Text debugLog;
-        private const string plantID = "d13896db-a505-4ce3-8d64-fca447897a38";
-        private Guid plantGuid;
 
         /// <summary>
         /// Get the <c>XRReferenceImageLibrary</c>
@@ -81,7 +79,6 @@ namespace UnityEngine.XR.ARFoundation.Samples
         {
             m_TrackedImageManager = GetComponent<ARTrackedImageManager>();
             //debugLog = GameObject.Find("DebugText").GetComponent<Text>();
-            plantGuid = new Guid(plantID);
         }
 
         void OnEnable()
@@ -108,21 +105,16 @@ namespace UnityEngine.XR.ARFoundation.Samples
             {
                 var gameObj = m_Instantiated[trackedImage.referenceImage.guid].transform.gameObject;
 
-                if (trackedImage.referenceImage.guid != plantGuid)
+                // image is tracking or tracking with limited state, show visuals and update its position
+                if (trackedImage.trackingState == TrackingState.Tracking)
                 {
-                    // image is tracking or tracking with limited state, show visuals and update its position
-                    if (trackedImage.trackingState == TrackingState.Tracking)
-                    {
-                        gameObj.SetActive(true);
-                        gameObj.transform.position = trackedImage.transform.position;
-                        //gameObj.transform.SetPositionAndRotation(trackedImage.transform.position, trackedImage.transform.rotation);
+                    gameObj.SetActive(true);
 
-                    }
-                    // image is no longer tracking, disable visuals TrackingState.Limited TrackingState.None
-                    else
-                    {
-                        gameObj.SetActive(false);
-                    }
+                }
+                // image is no longer tracking, disable visuals TrackingState.Limited TrackingState.None
+                else
+                {
+                    //gameObj.SetActive(false);
                 }
             }
 
@@ -139,13 +131,6 @@ namespace UnityEngine.XR.ARFoundation.Samples
             if (m_PrefabsDictionary.TryGetValue(trackedImage.referenceImage.guid, out var prefab))
             {
                 m_Instantiated[trackedImage.referenceImage.guid] = Instantiate(prefab, trackedImage.transform);
-
-                if (trackedImage.referenceImage.guid == plantGuid)
-                {
-                    Vector3 curPosition = m_Instantiated[trackedImage.referenceImage.guid].transform.position;
-                    Vector3 newPosition = new Vector3(curPosition.x += .5f, curPosition.y, curPosition.z);
-                    m_Instantiated[trackedImage.referenceImage.guid].transform.position = newPosition;
-                }
 
             }
         }

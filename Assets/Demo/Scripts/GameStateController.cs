@@ -8,6 +8,8 @@ public class GameStateController : MonoBehaviour
     public bool GameStateOne { get; set; }
     public bool GameStateTwo { get; set; }
 
+    public bool EntryRoofTriggered { get; set; }
+
     DebugController debugLog;
 
     void Start()
@@ -17,6 +19,8 @@ public class GameStateController : MonoBehaviour
         // Game state starts as false, becomes true when achievements completed
         GameStateOne = false;
         GameStateTwo = false;
+
+        EntryRoofTriggered = false;
     }
 
     void Update()
