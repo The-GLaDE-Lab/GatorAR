@@ -1,16 +1,22 @@
 # GatorAR
-This AR application displays virtual models and real time data when an image is scanned by a phone camera.
 
-The app is intended to lay the groundwork for education use at the University of Florida.
+This Augmented Reality application displays virtual models and real time data when a tracked image is scanned via the phone's camera.
+
+The app is intended to lay the groundwork for educational use at the University of Florida.
+
+Built and maintained by UF's Game-based Learning and Digital Experiences (**GLaDE**) Lab.
+
 # Getting Started
 
-### Project Settings
+### Unity Project Settings
 
 Make sure you are using Unity version **2020.2.7f1.**
 
 Install Android and/or iOS Build Support for the target Unity version.
 
-Package Versions:
+https://docs.unity3d.com/2020.2/Documentation/Manual/android-sdksetup.html
+
+Install the Following Package Versions:
 
 - ARFoundation: 4.1.5
 - ARCore XR Plugin: 4.1.5
@@ -25,7 +31,7 @@ Package Versions:
 
 3. Unity will rebuild the project and add any missing files needed to run
 
-4. Select ARScene under Assets -> Demo -> Scenes to view project
+4. Select ARScene under Assets -> Demo -> Scenes to view project's main scene
 
 To see the UI rendered as it would look on a phone, select the Game tab and change the Free Aspect drop down to 1920x1080 Portrait.
 
@@ -43,7 +49,9 @@ To see the UI rendered as it would look on a phone, select the Game tab and chan
 
 5. In Unity, your device should now be recognized in the Run Device drop down menu under the Android Build Settings
    
-   (If your device is not found you may need to download the Android SDK tools. Consult Unity documentation.)
+Note: **If your device is not found you may need to download the Android SDK tools. Consult Unity documentation below.**
+
+   https://docs.unity3d.com/2020.2/Documentation/Manual/android-sdksetup.html
    
 6. Select Build And Run and the app will run on your Android device
 
@@ -53,10 +61,10 @@ To see the UI rendered as it would look on a phone, select the Game tab and chan
 
 2. Select iOS for platform
 
-3. Select Build and this should create a .xcodeproj build file
+3. Select Build and this should create a .xcodeproj file within the build directory
+
+Note: **A Mac device (or macOS Virtual machine) running Xcode is required to build for iOS in the next step.**
 
 4. Follow steps 1-3 in the following guide to get the .xcodeproj file running on your iPhone:
 
    https://learn.unity.com/tutorial/setting-up-the-development-environment-for-ar-applications
-
-Note: **Xcode running on a Mac device must be used in step 4**
