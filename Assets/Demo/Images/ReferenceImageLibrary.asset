@@ -84,7 +84,7 @@ MonoBehaviour:
     m_Size: {x: 0.2032, y: 0.2032}
     m_SpecifySize: 1
     m_Name: TabletopQR
-    m_Texture: {fileID: 2800000, guid: 22d463c0c8745ea4db7abfe92368c928, type: 3}
+    m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5161622719500730251
       m_GuidHigh: 903917259472578225
@@ -94,7 +94,7 @@ MonoBehaviour:
     m_Size: {x: 0.062, y: 0.08871823}
     m_SpecifySize: 1
     m_Name: spades_7
-    m_Texture: {fileID: 2800000, guid: df5d8044426450b4cac5946868944f38, type: 3}
+    m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5487330312737491815
       m_GuidHigh: 3426883294975773586
@@ -104,7 +104,7 @@ MonoBehaviour:
     m_Size: {x: 0.062, y: 0.08653776}
     m_SpecifySize: 1
     m_Name: clubs_K
-    m_Texture: {fileID: 2800000, guid: 98574171024c4584e96f16e1a6358ab9, type: 3}
+    m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5488102718235253937
       m_GuidHigh: 11840744707302756265
@@ -114,7 +114,7 @@ MonoBehaviour:
     m_Size: {x: 0.062, y: 0.08654167}
     m_SpecifySize: 1
     m_Name: card_back
-    m_Texture: {fileID: 2800000, guid: 1fddc8b13783e6941b55414913963064, type: 3}
+    m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5069684314261029686
       m_GuidHigh: 973923172072372151
@@ -124,7 +124,7 @@ MonoBehaviour:
     m_Size: {x: 0.062, y: 0.08573294}
     m_SpecifySize: 1
     m_Name: diamonds_2
-    m_Texture: {fileID: 2800000, guid: 266752749717f1745b5c63e74a51b7e3, type: 3}
+    m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5048833668735502063
       m_GuidHigh: 17929138470552921264
@@ -134,4 +134,4 @@ MonoBehaviour:
     m_Size: {x: 0.062, y: 0.08736364}
     m_SpecifySize: 1
     m_Name: clubs_A
-    m_Texture: {fileID: 2800000, guid: d83928d40e185b7429017f4fc7d4055b, type: 3}
+    m_Texture: {fileID: 0}
