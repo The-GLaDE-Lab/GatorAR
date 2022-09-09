@@ -12,6 +12,9 @@ TagManager:
   - Boiler Roof
   - Chiller Roof
   - Roof
+  - Red Cube
+  - Green Cyliner
+  - Blue Sphere
   layers:
   - Default
   - TransparentFX
