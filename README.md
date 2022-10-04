@@ -6,6 +6,24 @@ The app is intended to lay the groundwork for educational use at the University 
 
 Built and maintained by UF's Game-based Learning and Digital Experiences (**GLaDE**) Lab.
 
+# Beta Build
+
+Current state of the beta build and some results from Alpha testing.
+
+Test Device: iPhone 12
+
+### Usability 
+
+As observed during testing of the Alpha build, most UI elements work as expected. The menus are easy to navigate with simple button layouts making the app intuitive to use. 
+
+### Build Quality 
+
+This build is currently free of any gamebreaking bugs. In Alpha, the app performed relatvely well on the testing device, working as expected without crashing. The objects and UI elements within this build behave as expected, with notable events such as object interactions and state changes being logged for debugging. Menu choices are consistent with the current game state and always result in the same actions.
+
+### Features
+
+Persistant game state is used within the app to keep track of the player's progression through a mission as they complete objectives. The current UI makes it easy for users to navigate the game and check the state of their mission.
+
 # Getting Started
 
 ### Unity Project Settings
