@@ -13,7 +13,7 @@ public class AnchorCreator : MonoBehaviour
     [SerializeField]
     GameStateController GameStateController;
 
-    static List<ARRaycastHit> Hits = new List<ARRaycastHit>();
+    List<ARRaycastHit> Hits = new List<ARRaycastHit>();
 
     List<ARAnchor> Anchors = new List<ARAnchor>();
 
