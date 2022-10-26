@@ -111,7 +111,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
                     gameObj.SetActive(true);
 
                 }
-                // image is no longer tracking, disable visuals TrackingState.Limited TrackingState.None
+                // image is no longer tracking, disable visuals TrackingState.Limited TrackingState.None+
                 else
                 {
                     //gameObj.SetActive(false);

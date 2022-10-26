@@ -31,27 +31,13 @@ public class ObjectInteraction : MonoBehaviour
             if (Physics.Raycast(rayCast, out var raycastHit))
             {
                 // Get name of collider that has been hit
-                string tag = raycastHit.transform.tag;
+                debugLog.NewLineDebugText(raycastHit.transform.tag + "\t");
+                debugLog.SameLineDebugText(raycastHit.transform.name);
 
-                debugLog.NewLineDebugText(tag);
-
-                if (raycastHit.collider.CompareTag("Red Cube")) {
-                    GameObject.Find("IntroFive").SetActive(true);
-                    GameObject.Find("IntroFour").SetActive(false);
-                    
-                    //GameObject.Find("AR Session Origin").GetComponent<ARTrackedImageManager>().enabled = false;
-                    //gameObject.transform.Rotate(0, 45, 0);
+                if (raycastHit.collider.CompareTag("Intro Shape")) {
+                    raycastHit.transform.gameObject.SetActive(false);
                 }
 
-                if (raycastHit.collider.CompareTag("Blue Sphere")) {
-                    //GameObject.Find("Game Piece").transform.Rotate(0, 45, 0);
-                    gameObject.SetActive(false);
-                }
-
-                if (raycastHit.collider.CompareTag("Green Cylinder")) {
-                    GameObject.Find("Game Piece").transform.Rotate(0.0f, 45.0f, 0.0f);
-                    gameObject.SetActive(false);
-                }
             }
         }
     }

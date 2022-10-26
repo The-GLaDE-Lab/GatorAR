@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2724337097130196191}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Blue Sphere
+  m_TagString: Intro Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 9105817276471263225}
   - component: {fileID: -8985401592194604112}
   m_Layer: 0
-  m_Name: Game Piece 2
+  m_Name: Blue Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,4 +139,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020a2fce9f38bd94b8b49c1d285c91ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastManager: {fileID: 0}

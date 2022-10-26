@@ -22,8 +22,8 @@ public class AchievementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /* This ensures the achievement only pops up once as 
-         * there is no method to set this bool back to false */
+        /* This ensures the achievement only pops up once; 
+         * there is no method to set this back to false */
         if (!AchievementShown)
         {
             // Check for updated game state
