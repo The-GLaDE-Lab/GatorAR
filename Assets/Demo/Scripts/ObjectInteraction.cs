@@ -31,11 +31,15 @@ public class ObjectInteraction : MonoBehaviour
             if (Physics.Raycast(rayCast, out var raycastHit))
             {
                 // Get name of collider that has been hit
-                debugLog.NewLineDebugText(raycastHit.transform.tag + "\t");
+                debugLog.NewLineDebugText(raycastHit.transform.tag + ":\t");
                 debugLog.SameLineDebugText(raycastHit.transform.name);
 
                 if (raycastHit.collider.CompareTag("Intro Shape")) {
+                    // This disables the object containing the collider; doesn't respawn
                     raycastHit.transform.gameObject.SetActive(false);
+
+                    // While this results in the object being immediately respawned by the image
+                    //gameObject.SetActive(false);
                 }
 
             }

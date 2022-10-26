@@ -45,11 +45,12 @@ public class AnchorCreator : MonoBehaviour
 
     void Update()
     {
-        if (!PlacementAllowed)
-            return;
-
+        
         UpdatePlacementPose();
         UpdatePlacementIndicator();
+
+        if (!PlacementAllowed)
+            return;
 
         var touch = Input.GetTouch(0);
         if (placementPoseIsValid && (Input.touchCount > 0) && (touch.phase == TouchPhase.Began))
@@ -101,7 +102,7 @@ public class AnchorCreator : MonoBehaviour
             {
                 var oldPrefab = AnchorManager.anchorPrefab;
                 AnchorManager.anchorPrefab = prefab;
-                anchor = AnchorManager.AttachAnchor(plane, hit.pose);
+                anchor = AnchorManager.AttachAnchor(plane, placementPose);
                 AnchorManager.anchorPrefab = oldPrefab;
                 return anchor;
             }
@@ -128,7 +129,7 @@ public class AnchorCreator : MonoBehaviour
     {
         var screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
         var hits = new List<ARRaycastHit>();
-        RaycastManager.Raycast(screenCenter, hits, TrackableType.Planes);
+        RaycastManager.Raycast(screenCenter, hits, TrackableType.PlaneWithinPolygon);
 
         placementPoseIsValid = hits.Count > 0;
         if (placementPoseIsValid)
