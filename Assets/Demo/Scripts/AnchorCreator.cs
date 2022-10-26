@@ -29,8 +29,14 @@ public class AnchorCreator : MonoBehaviour
         set => Prefab = value;
     }
 
+    DebugController debugLog;
+    public GameObject placementIndicator;
+    private Pose placementPose;
+    private bool placementPoseIsValid = false;
+
     void Awake()
     {
+        debugLog = GameObject.Find("DebugController").GetComponent<DebugController>();
         RaycastManager = GetComponent<ARRaycastManager>();
         AnchorManager = GetComponent<ARAnchorManager>();
 
@@ -39,14 +45,23 @@ public class AnchorCreator : MonoBehaviour
 
     void Update()
     {
-        if (PlacementAllowed)
+        if (!PlacementAllowed)
+            return;
+
+        UpdatePlacementPose();
+        UpdatePlacementIndicator();
+
+        var touch = Input.GetTouch(0);
+        if (placementPoseIsValid && (Input.touchCount > 0) && (touch.phase == TouchPhase.Began))
         {
+            /*
             if (Input.touchCount == 0)
                 return;
 
             var touch = Input.GetTouch(0);
             if (touch.phase != TouchPhase.Began)
                 return;
+            */
 
             // Perform the raycast
             if (RaycastManager.Raycast(touch.position, Hits, TrackableType.PlaneWithinPolygon))
@@ -107,5 +122,35 @@ public class AnchorCreator : MonoBehaviour
     public void SetPlacementAllowed(bool value)
     {
         PlacementAllowed = value;
+    }
+
+    private void UpdatePlacementPose()
+    {
+        var screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
+        var hits = new List<ARRaycastHit>();
+        RaycastManager.Raycast(screenCenter, hits, TrackableType.Planes);
+
+        placementPoseIsValid = hits.Count > 0;
+        if (placementPoseIsValid)
+        {
+            placementPose = hits[0].pose;
+
+            var cameraForward = Camera.current.transform.forward;
+            var cameraBearing = new Vector3(cameraForward.x, 0, cameraForward.z).normalized;
+            placementPose.rotation = Quaternion.LookRotation(cameraBearing);
+        }
+    }
+
+    private void UpdatePlacementIndicator()
+    {
+        if (placementPoseIsValid)
+        {
+            placementIndicator.SetActive(true);
+            placementIndicator.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
+        }
+        else
+        {
+            placementIndicator.SetActive(false);
+        }
     }
 }
