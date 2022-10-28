@@ -23,6 +23,7 @@ public class ReferencePointManager : MonoBehaviour
         aRAnchorManager = GetComponent<ARAnchorManager>();
     }
 
+    [System.Obsolete]
     void Update()
     {
         if (Input.touchCount == 0)

@@ -408,10 +408,10 @@ public class SimpleHelvetica : MonoBehaviour {
 	public void ApplyMeshRenderer(){
 		
 		MeshRenderer selfMeshRenderer=GetComponent<MeshRenderer>();
-		bool selfMesherRendererCastShadows = selfMeshRenderer.castShadows;
+		var selfMesherRendererCastShadows = selfMeshRenderer.shadowCastingMode;
 		bool selfMesherRendererReceiveShadows = selfMeshRenderer.receiveShadows;
 		Material[] selfMesherRendererSharedMaterials = selfMeshRenderer.sharedMaterials;
-		bool selfMesherRendererUseLightProbes = selfMeshRenderer.useLightProbes;
+		var selfMesherRendererUseLightProbes = selfMeshRenderer.lightProbeUsage;
 		Transform selfMesherRendererLightProbeAnchor = selfMeshRenderer.probeAnchor;
 			
 		Debug.Log ("Apply MeshRenderer");
@@ -420,10 +420,10 @@ public class SimpleHelvetica : MonoBehaviour {
 			MeshRenderer thisMeshRenderer = child.gameObject.GetComponent<MeshRenderer>();
 			Debug.Log (selfMeshRenderer);
 			if (thisMeshRenderer!=null){
-				thisMeshRenderer.castShadows = selfMesherRendererCastShadows;
+				thisMeshRenderer.shadowCastingMode = selfMesherRendererCastShadows;
 				thisMeshRenderer.receiveShadows = selfMesherRendererReceiveShadows;
 				thisMeshRenderer.sharedMaterials = selfMesherRendererSharedMaterials;
-				thisMeshRenderer.useLightProbes = selfMesherRendererUseLightProbes;
+				thisMeshRenderer.lightProbeUsage = selfMesherRendererUseLightProbes;
 				thisMeshRenderer.probeAnchor = selfMesherRendererLightProbeAnchor;
 			}
 		}
@@ -431,10 +431,10 @@ public class SimpleHelvetica : MonoBehaviour {
 		foreach (Transform child in transform){
 			MeshRenderer thisMeshRenderer = child.gameObject.GetComponent<MeshRenderer>();
 			if (thisMeshRenderer!=null){
-				thisMeshRenderer.castShadows = selfMesherRendererCastShadows;
+				thisMeshRenderer.shadowCastingMode = selfMesherRendererCastShadows;
 				thisMeshRenderer.receiveShadows = selfMesherRendererReceiveShadows;
 				thisMeshRenderer.sharedMaterials = selfMesherRendererSharedMaterials;
-				thisMeshRenderer.useLightProbes = selfMesherRendererUseLightProbes;
+				thisMeshRenderer.lightProbeUsage = selfMesherRendererUseLightProbes;
 				thisMeshRenderer.probeAnchor = selfMesherRendererLightProbeAnchor;
 			}
 		}

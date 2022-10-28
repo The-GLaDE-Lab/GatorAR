@@ -8,7 +8,7 @@ using UnityEngine.XR.ARSubsystems;
 public class AnchorCreator : MonoBehaviour
 {
     [SerializeField]
-    GameObject Prefab, ResetAnchorButton;
+    GameObject Prefab, ResetAnchorButton, placementIndicator;
 
     [SerializeField]
     GameStateController GameStateController;
@@ -30,7 +30,7 @@ public class AnchorCreator : MonoBehaviour
     }
 
     DebugController debugLog;
-    public GameObject placementIndicator;
+    //public GameObject placementIndicator;
     private Pose placementPose;
     private bool placementPoseIsValid = false;
 
@@ -45,12 +45,11 @@ public class AnchorCreator : MonoBehaviour
 
     void Update()
     {
-        
-        UpdatePlacementPose();
-        UpdatePlacementIndicator();
-
         if (!PlacementAllowed)
             return;
+
+        UpdatePlacementPose();
+        UpdatePlacementIndicator();
 
         var touch = Input.GetTouch(0);
         if (placementPoseIsValid && (Input.touchCount > 0) && (touch.phase == TouchPhase.Began))
@@ -104,6 +103,7 @@ public class AnchorCreator : MonoBehaviour
                 AnchorManager.anchorPrefab = prefab;
                 anchor = AnchorManager.AttachAnchor(plane, placementPose);
                 AnchorManager.anchorPrefab = oldPrefab;
+                placementIndicator.SetActive(false); //
                 return anchor;
             }
         }
@@ -134,10 +134,12 @@ public class AnchorCreator : MonoBehaviour
         placementPoseIsValid = hits.Count > 0;
         if (placementPoseIsValid)
         {
+            //debugLog.NewLineDebugText("Placement Pose Valid");
+            
             placementPose = hits[0].pose;
-
+            
             var cameraForward = Camera.current.transform.forward;
-            var cameraBearing = new Vector3(cameraForward.x, 0, cameraForward.z).normalized;
+            var cameraBearing = new Vector3(-cameraForward.x, 0, -cameraForward.z).normalized;
             placementPose.rotation = Quaternion.LookRotation(cameraBearing);
         }
     }
@@ -146,6 +148,7 @@ public class AnchorCreator : MonoBehaviour
     {
         if (placementPoseIsValid)
         {
+            //debugLog.NewLineDebugText("Placement Indicator Active");
             placementIndicator.SetActive(true);
             placementIndicator.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
         }
