@@ -157,4 +157,23 @@ public class AnchorCreator : MonoBehaviour
             placementIndicator.SetActive(false);
         }
     }
+
+    public void ResetIntroShapes()
+    {
+        foreach (GameObject gameObj in FindObjectsOfType<GameObject>(true))
+        {
+            if (gameObj.CompareTag("Intro Shape"))
+            {
+                if (gameObj.name == "Intro Cube")
+                    gameObj.GetComponent<Renderer>().material.color = new Color(1.0f, 0.0f, 0.0f);
+                else if (gameObj.name == "Intro Sphere")
+                    gameObj.GetComponent<Renderer>().material.color = new Color(0.08370414f, 0.764623f, 0.9339623f);
+                else if (gameObj.name == "Intro Cylinder")
+                    gameObj.GetComponent<Renderer>().material.color = new Color(0.0f, 1.0f, 0.009963274f);
+
+                gameObj.SetActive(true);
+                gameObj.transform.parent.gameObject.SetActive(false);
+            }
+        }
+    }
 }

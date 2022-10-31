@@ -13,6 +13,9 @@ TagManager:
   - Chiller Roof
   - Roof
   - Intro Shape
+  - Red Cube
+  - Intro Cube
+  - Intro Sphere
   layers:
   - Default
   - TransparentFX

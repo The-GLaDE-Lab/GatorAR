@@ -41,21 +41,21 @@ public class RobotText : MonoBehaviour
 
     IEnumerator InitializeText()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
 
         FirstFloatingText.SetActive(true);
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
 
         FirstFloatingText.SetActive(false);
         SecondFloatingText.SetActive(true);
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(6);
 
         SecondFloatingText.SetActive(false);
         ThirdFloatingText.SetActive(true);
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(4);
         
         ThirdFloatingText.SetActive(false);
         FourthFloatingText.SetActive(true);

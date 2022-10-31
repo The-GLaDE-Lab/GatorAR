@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
 
     IEnumerator delayShow()
     {
-        yield return new WaitForSeconds(0.02f);
+        yield return new WaitForSeconds(0.01f);
         menuButton.SetBool("isMenuHidden",false);
         dialog.SetBool("isHidden",false);
     }

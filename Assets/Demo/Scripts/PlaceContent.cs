@@ -14,8 +14,12 @@ public class PlaceContent : MonoBehaviour
 
     private void Update() {
 
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Instantiate(objectToPlace, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+        }
         //if (Input.GetMouseButtonDown(0) && !IsClickOverUI()) {
-        if (Input.GetTouch(0).phase == TouchPhase.Began && !IsClickOverUI()) {
+        /*if (Input.GetTouch(0).phase == TouchPhase.Began && !IsClickOverUI()) {
 
             List<ARRaycastHit> hitPoints = new List<ARRaycastHit>();
             raycastManager.Raycast(Input.mousePosition, hitPoints, TrackableType.PlaneWithinPolygon);
@@ -27,7 +31,7 @@ public class PlaceContent : MonoBehaviour
                 //transform.rotation = pose.rotation;
                 //transform.position = pose.position;
             }
-        }
+        }*/
     }
 
     bool IsClickOverUI() {
