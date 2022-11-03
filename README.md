@@ -6,11 +6,13 @@ The app is intended to lay the groundwork for educational use at the University 
 
 Built and maintained by UF's Game-based Learning and Digital Experiences (**GLaDE**) Lab.
 
-## Beta Build
+## Release Candidate Build
 
-Current state of the Beta build and changes based on results from Alpha testing.
+Current state of the current release candidate and changes based on results from Beta testing.
 
-Test Device: iPhone 12
+Test Device: iPhone 12 running iOS 15.7
+
+Project Built and Installed to Test Device through Xcode Version 13.4.1
 
 ### Usability
 
@@ -20,17 +22,21 @@ The AR intro can be started at any time by users. It features a sequence of inst
 
 ### Build Quality
 
-This build is currently free of any gamebreaking bugs. In Alpha, the app performed relatvely well on the testing device, working as expected without crashing. The objects and UI elements within this build behave as expected, with notable events such as object interactions and state changes being logged for debugging. Menu choices are consistent with the current game state and always result in the same actions.
+This build is currently free of any gamebreaking bugs. In Beta, the app performed relatvely well on the testing device, working as expected without crashing. The objects and UI elements within this build behave as expected, with notable events such as object interactions and state changes being logged for debugging. Menu choices are consistent with the current game state and always result in the same actions.
 
 The AR image recognition works well on the test device, with game objects spawning soon after the camera is pointed at the selected images. The placement of the objects in the world also works relatively well. In AR space, objects tend to stay where they're left. They also respond well to tap interactions, although this could be improved for later versions with more types of interactions (dragging, flicking, etc.). Rapid movement of the phone camera does often result in objects being moved in the game world. Rescanning images will reposition (or respawn) their assigned object. Improved anchoring could be implemented in order to reduce the effect of this unwanted 'drift'.
 
 In terms of aesthetics, the app's user interface uses a simple layout with a pleasant blue/white color scheme. Assets have been made using icons found online resulting in fairly intuitive button icons. UI animations, like the one used to slide the menu, are smooth and work reliably. Game objects, asside from the robot in the multipurpose room, are currently of simple design. They consist mainly of basic shapes or low-res models with one or no colors. These are still in development.
+
+Extensive use of the improved debug log during recent testing has helped find solutions to bugs in image tracking and object interaction.
 
 ### Features
 
 The application's core functions include introducing users to AR and then presenting them with mission objectives that they must complete by exploring a location with AR. The project's intended audience is students taking courses in thermodynamics or energy production. Mission objectives will then include plenty of classwork-type questions relating to these fields but also connected to the machines in the location. Missions will involve exploring the plant and looking for scannable prompts on select machines.
 
 Currently, these missions have not been implemented in their entirety. After the introduction, the game's robot will breifly present the start of a mission. This includes a list of sample objectives; the first of which can be completed fairly easily. A template is being developed that will make missions and their content easy to modify. Persistant game state is used within the app to keep track of the player's progression through a mission as they complete objectives. The current UI makes it easy for users to navigate the game and check the state of their mission.
+
+UI panels that display mission objectives and relevant flavor text have been updated to implement a sample mission. This mission will have students interact with one of the chillers in the plant as they work to “fix” issues with it. Elements of the intro sequence will be used to implements parts of this mission. Once completed, it will serve as a template for future missions.
 
 Users will also be presented with achievements for completing important mission objectives or other meaningful game scenarios. Only one of them is currently active, popping up shortly after the first objective is completed.
 
