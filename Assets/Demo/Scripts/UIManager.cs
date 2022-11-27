@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
 {
     public Animator dialog;
     public Animator menuButton;
+    public Animator settingsPanel;
 
     public GameObject cloudEnable, cloudDisable, planeEnable, planeDisable;
 
@@ -14,17 +15,31 @@ public class UIManager : MonoBehaviour
     public void ToggleDialog()
     {
         if(dialog.GetBool("isHidden"))
-            {
-                SaveButtonState();
-                HideButtons();
-                StartCoroutine(delayShow());
-            }
+        {
+            SaveButtonState();
+            HideButtons();
+            StartCoroutine(delayShow());
+        }
         else
-            {
-                StartCoroutine(delayHide());
-                menuButton.SetBool("isMenuHidden",true);
-                dialog.SetBool("isHidden",true);
-            }
+        {
+            StartCoroutine(delayHide());
+            settingsPanel.SetBool("isSettingsHidden", true);
+            menuButton.SetBool("isMenuHidden",true);
+            dialog.SetBool("isHidden",true);
+        }
+    }
+
+    public void ToggleSettings()
+    {
+        if(settingsPanel.GetBool("isSettingsHidden"))
+        {
+            StartCoroutine(delayShowSettings());
+        }
+        else
+        {
+            StartCoroutine(delayHideSettings());
+            settingsPanel.SetBool("isSettingsHidden", true);
+        }
     }
 
     public void SaveButtonState()
@@ -62,5 +77,16 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         RestoreButtons();
+    }
+
+    IEnumerator delayShowSettings()
+    {
+        yield return new WaitForSeconds(0.01f);
+        settingsPanel.SetBool("isSettingsHidden", false);
+    }
+
+    IEnumerator delayHideSettings()
+    {
+        yield return new WaitForSeconds(0.5f);
     }
 }

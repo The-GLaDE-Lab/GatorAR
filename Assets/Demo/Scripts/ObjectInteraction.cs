@@ -17,6 +17,7 @@ public class ObjectInteraction : MonoBehaviour
 
     private void Update() {
 
+        //if (Input.GetKeyDown(KeyCode.A)){
         if (Input.GetTouch(0).phase == TouchPhase.Began) {
 
             Ray rayCast = Camera.current.ScreenPointToRay(Input.GetTouch(0).position);

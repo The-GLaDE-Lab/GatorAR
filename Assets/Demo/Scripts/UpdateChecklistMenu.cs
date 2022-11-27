@@ -26,11 +26,7 @@ public class UpdateChecklistMenu : MonoBehaviour
         // Every frame, check if game state has changed
         GameStateOne = gameStateScript.GameStateOne;
 
-        // If user gets achievement,
-        if (GameStateOne)
-        {
-            // Update checkmark on Checklist to be checked
-            firstTaskToggle.isOn = true;
-        }
+        // Update checkmark on Checklist to be checked
+        firstTaskToggle.isOn = GameStateOne;
     }
 }
