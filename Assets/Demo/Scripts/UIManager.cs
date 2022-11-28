@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class UIManager : MonoBehaviour
     public Animator menuButton;
     public Animator settingsPanel;
 
-    public GameObject cloudEnable, cloudDisable, planeEnable, planeDisable;
+    public GameObject cloudEnable, cloudDisable, planeEnable, planeDisable, helpButton;
 
     static bool cloudEnableStatus, cloudDisableStatus, planeEnableStatus, planeDisableStatus;
 
@@ -88,5 +89,16 @@ public class UIManager : MonoBehaviour
     IEnumerator delayHideSettings()
     {
         yield return new WaitForSeconds(0.5f);
+    }
+
+    public void OpenHelp()
+    {
+        Application.OpenURL("google.com");
+    }
+
+    public void ToggleHelpFunction()
+    {
+        helpButton.GetComponent<Button>().enabled = !helpButton.GetComponent<Button>().enabled;
+        helpButton.GetComponent<Toggle>().enabled = !helpButton.GetComponent<Toggle>().enabled;
     }
 }
