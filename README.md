@@ -1,44 +1,44 @@
 # GatorAR
 
-This Augmented Reality application displays virtual models and real time data when a tracked image is scanned via the phone's camera.
+This Augmented Reality application displays virtual models and real-time data when tracked images are scanned via the phone's camera.
 
 The app is intended to lay the groundwork for educational use at the University of Florida.
 
 Built and maintained by UF's Game-based Learning and Digital Experiences (**GLaDE**) Lab.
 
-## Release Candidate Build
+## Production Release Build
 
-Current state of the current release candidate and changes based on results from Beta testing.
+The current state of the Production Release and changes from the last Release Candidate.
 
-Test Device: iPhone 12 running iOS 15.7
+Test Device: iPhone 12 (iOS 16.1.1)
 
-Project Built and Installed to Test Device through Xcode Version 13.4.1
+Project Built and Installed to Test Device through Xcode 14.1 (macOS 13.0.1)
 
 ### Usability
 
-The app's user interface consists of a simple button layout that keeps the most important options readily accessible and leaves plenty of space for interactions in AR space. All game buttons and toggles are highlighted when clicked and animations are smooth. The main game screen features a sliding menu that hides away most user options, such as mission objectives or debugging tools. 'Pause' is kept on the main screen along with any relavent buttons. This includes toggles for debugging visuals (which are enabled by default) and a button to start the game's AR introduction. This design makes the app intuitive to use and easy to navigate.
+The app's user interface consists of a simple button layout that keeps the most important options readily accessible and leaves plenty of space for interactions in the AR space. All buttons and toggles are highlighted when clicked in-game and their animations are consistently smooth. The main game screen features a sliding menu that hides away most user options, such as mission objectives or settings. It slides open reliably and the process maintains the state of any buttons being hidden. 'Pause' is kept on the main screen along with any relevant buttons. This includes a button to start the game's AR introduction and, when applicable, buttons to toggle AR debugging visuals. This design makes the app intuitive to use and easy to navigate.
 
-The AR intro can be started at any time by users. It features a sequence of instructions that prompts them to scan specific images in order to make simple objects appear (a cube, sphere, and cylinder). Then it asks them to interact with these objects by tapping on them, thereby introducing them to basic AR concepts. Finally, it sends them to the power plant's multipurpose room, where the game can continue. Once they reach that room, a scannable image will trigger a robot character that provides the user with their first mission objective.
+The AR intro can be started at any time by users. It features a sequence of instructions that prompts them to scan specific images to make simple objects appear (a cube, sphere, and cylinder). Then it asks them to interact with these objects by tapping on them, thereby introducing them to basic AR concepts. Finally, it directs them to the power plant's multipurpose room, where the game can continue. Once they reach that room, another scannable image will trigger an animated robot character that provides the user with their first mission and its corresponding objectives.
+
+The objectives for this mission can be accessed through the UI as part of the hidden sliding menu. After clicking the respective button, a prompt will fill the screen with a checklist that is updated as players progress through the mission. Mission progress can be reset by accessing the 'Reset' button, which is now contained under settings. An additional setting is an option to enable 'Dev. Mode', which changes the function of the 'Help' button to open the debug log and shows the debug visuals.
 
 ### Build Quality
 
-This build is currently free of any gamebreaking bugs. In Beta, the app performed relatvely well on the testing device, working as expected without crashing. The objects and UI elements within this build behave as expected, with notable events such as object interactions and state changes being logged for debugging. Menu choices are consistent with the current game state and always result in the same actions.
+This build is currently free of any major bugs. In previous releases, the app has performed well on the testing device, working as expected with minimal crashing. Typical errors included the misplacement of objects and some trouble maintaining the state of inactive objects. Most recently, an issue with updated device firmware led to significant performance issues. The objects and UI elements within this build behave as expected, with notable events such as object interactions and state changes being logged for debugging. Menu choices have been updated to hide away buttons to enable 'Dev. Mode' and 'Reset', which now resets mission progress in addition to the current AR session. This resets the objects spawned through images and improves performance by removing unused planes from memory.
 
-The AR image recognition works well on the test device, with game objects spawning soon after the camera is pointed at the selected images. The placement of the objects in the world also works relatively well. In AR space, objects tend to stay where they're left. They also respond well to tap interactions, although this could be improved for later versions with more types of interactions (dragging, flicking, etc.). Rapid movement of the phone camera does often result in objects being moved in the game world. Rescanning images will reposition (or respawn) their assigned object. Improved anchoring could be implemented in order to reduce the effect of this unwanted 'drift'.
+AR image recognition works well on the test device, with game objects spawning almost instantly after the camera is pointed at the selected images. This is the case in ideal conditions and it has been found that lower light environments might make it harder for the camera to recognize distinct shapes in the image. This is also the case for images on reflective surfaces, with duller surfaces working best for image detection.
 
-In terms of aesthetics, the app's user interface uses a simple layout with a pleasant blue/white color scheme. Assets have been made using icons found online resulting in fairly intuitive button icons. UI animations, like the one used to slide the menu, are smooth and work reliably. Game objects, asside from the robot in the multipurpose room, are currently of simple design. They consist mainly of basic shapes or low-res models with one or no colors. These are still in development.
+The placement of the objects in the world also works relatively well. In AR space, objects tend to stay where they're left. They also respond well to tap interactions, although this could be improved for later versions with more types of interactions (dragging, flicking, etc.). Rapid movement of the phone camera can sometimes result in objects being moved in the game world. Rescanning images will reposition their assigned object.
 
-Extensive use of the improved debug log during recent testing has helped find solutions to bugs in image tracking and object interaction.
+In terms of aesthetics, the app's user interface uses a simple layout with a pleasant blue/white color scheme. Assets have been made using icons found online resulting in fairly intuitive button icons. UI animations, like the one used to slide the menu, are smooth and work reliably. Game objects, aside from the robot in the multipurpose room, are currently of simple design. They consist mainly of basic shapes or low-res models with one or no colors. These are still in development.
 
 ### Features
 
-The application's core functions include introducing users to AR and then presenting them with mission objectives that they must complete by exploring a location with AR. The project's intended audience is students taking courses in thermodynamics or energy production. Mission objectives will then include plenty of classwork-type questions relating to these fields but also connected to the machines in the location. Missions will involve exploring the plant and looking for scannable prompts on select machines.
+The application's core functions include introducing users to AR and then presenting them with mission objectives that they must complete by exploring a location with AR. The project's intended audience is students taking courses in thermodynamics or energy production. Mission objectives will then include plenty of classwork-type questions relating to these fields but also connected to the machines in the location. Missions will involve exploring the plant and looking for scannable prompts on select machines that prompt users to solve problems to reach a greater goal.
 
-Currently, these missions have not been implemented in their entirety. After the introduction, the game's robot will breifly present the start of a mission. This includes a list of sample objectives; the first of which can be completed fairly easily. A template is being developed that will make missions and their content easy to modify. Persistant game state is used within the app to keep track of the player's progression through a mission as they complete objectives. The current UI makes it easy for users to navigate the game and check the state of their mission.
+For this build, a sample mission has been implemented that will serve as a template for most missions going forward. It is presented to players shortly after completing the introductory sequence, once they make their way into the multipurpose room. It consists of a few objectives that have the player interact with a specific machine in the power plant. Initially, players must find the given machine and scan an image near its control panel. The spawned prompt will ask players to answer a thermodynamics question relating to the given machine and provide them with only some of the information they will need. Missing values can be found by scanning the appropriate location on the machines. For example, scanning an image target near the inlet tube of a chiller reveals the input temperature. This value is then saved to the original question prompt. Finding these missing values and answering the question correctly are also additional objectives that will be updated upon completion. Values used in the current thermodynamics question are picked at random during mission start (or reset) and have realistic ranges.
 
-UI panels that display mission objectives and relevant flavor text have been updated to implement a sample mission. This mission will have students interact with one of the chillers in the plant as they work to “fix” issues with it. Elements of the intro sequence will be used to implements parts of this mission. Once completed, it will serve as a template for future missions.
-
-Users will also be presented with achievements for completing important mission objectives or other meaningful game scenarios. Only one of them is currently active, popping up shortly after the first objective is completed.
+Persistent game state is used within the app to keep track of the player's progression through a mission as they complete objectives. The current UI makes it easy for users to navigate the game and check their mission progress.
 
 ## Getting Started
 
@@ -52,10 +52,12 @@ Install Android and/or iOS Build Support for the target Unity version.
 
 Install the Following Package Versions:
 
-- ARFoundation: 4.1.5
+- ARFoundation: 4.1.13
 - ARCore XR Plugin: 4.1.5
-- ARKit XR Plugin: 4.1.5
+- ARKit XR Plugin: 4.1.13
 - XR Plugin Management: 4.0.1
+
+   Note: ARFoundation and ARKit here were updated from the previous release due to an issue with the testing device relating to iOS 16. This list reflects the current packages being used with development being focused on iOS devices. Building the project for Android might require updating ARCore as well but this has not been tested.
 
 ### Building Project
 
