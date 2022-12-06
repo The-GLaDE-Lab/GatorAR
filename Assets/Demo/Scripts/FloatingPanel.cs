@@ -42,7 +42,7 @@ public class FloatingPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //GameStateScript = GameObject.Find("GameStateController").GetComponent<GameStateController>();
+        GameStateController = GameObject.Find("GameStateController").GetComponent<GameStateController>();
         debugLog = GameObject.Find("DebugController").GetComponent<DebugController>();
 
         DiagramPanel = GameObject.Find("DiagramPanel");
@@ -60,11 +60,6 @@ public class FloatingPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*var target = Camera.main.transform.position;
-        target.x = -target.x;
-        target.z = -target.z;
-        target.y = transform.position.y;
-        transform.LookAt(target);*/
         var cameraForward = Camera.current.transform.forward;
         var cameraBearing = new Vector3(cameraForward.x, 0, cameraForward.z).normalized;
         transform.rotation = Quaternion.LookRotation(cameraBearing);
@@ -97,9 +92,9 @@ public class FloatingPanel : MonoBehaviour
         debugLog.NewLineDebugText("Specific Heat = " + SpecificHeatAnswer.ToString());
         debugLog.NewLineDebugText("Mass Flow Out = " + MassFlowOutAnswer.ToString());
         debugLog.NewLineDebugText("Output Temp = " + OutputTempAnswer.ToString());
-        /*Debug.Log("Specific Heat = " + SpecificHeatAnswer.ToString());
+        Debug.Log("Specific Heat = " + SpecificHeatAnswer.ToString());
         Debug.Log("Mass Flow Out = " + MassFlowOutAnswer.ToString());
-        Debug.Log("Output Temp = " + OutputTempAnswer.ToString());*/
+        Debug.Log("Output Temp = " + OutputTempAnswer.ToString());
     }
 
     bool CheckTolerance(float Input, float Answer, int Percent)
@@ -132,7 +127,7 @@ public class FloatingPanel : MonoBehaviour
             //if (SpecificHeatInput == SpecificHeatAnswer)
             {
                 //Debug.Log("Specific Heat: Correct");
-                debugLog.NewLineDebugText("Specific Heat: Correct");
+                //debugLog.NewLineDebugText("Specific Heat: Correct");
                 SpecificHeat.GetComponentInChildren<Image>().sprite = CorrectPNG;
                 SpecificHeat.GetComponentInChildren<InputField>().interactable = false;
                 SpecificHeatText.text = "Cp = " + SpecificHeatAnswer.ToString() + " kJ/kg\u2022K";
@@ -141,14 +136,14 @@ public class FloatingPanel : MonoBehaviour
             else
             {
                 //Debug.Log("Specific Heat: Incorrect");
-                debugLog.NewLineDebugText("Specific Heat: Incorrect");
+                //debugLog.NewLineDebugText("Specific Heat: Incorrect");
                 SpecificHeat.GetComponentInChildren<Image>().sprite = IncorrectPNG;
             }
         }
         else
         {
             //Debug.Log("Incorrect Format");
-            debugLog.NewLineDebugText("Incorrect Format");
+            //debugLog.NewLineDebugText("Incorrect Format");
             SpecificHeat.GetComponentInChildren<Image>().sprite = FormatPNG;
         }
 
@@ -159,7 +154,7 @@ public class FloatingPanel : MonoBehaviour
             //if (MassFlowOutInput == MassFlowOutAnswer)
             {
                 //Debug.Log("Mass Flow Out: Correct");
-                debugLog.NewLineDebugText("Mass Flow Out: Correct");
+                //debugLog.NewLineDebugText("Mass Flow Out: Correct");
                 MassFlowOut.GetComponentInChildren<Image>().sprite = CorrectPNG;
                 MassFlowOut.GetComponentInChildren<InputField>().interactable = false;
                 OutputTwo.text = "m2 = " + MassFlowOutAnswer.ToString() + " kg/s";
@@ -168,14 +163,14 @@ public class FloatingPanel : MonoBehaviour
             else
             {
                 //Debug.Log("Mass Flow Out: Incorrect");
-                debugLog.NewLineDebugText("Mass Flow Out: Incorrect");
+                //debugLog.NewLineDebugText("Mass Flow Out: Incorrect");
                 MassFlowOut.GetComponentInChildren<Image>().sprite = IncorrectPNG;
             }
         }
         else
         {
             //Debug.Log("Incorrect Format");
-            debugLog.NewLineDebugText("Incorrect Format");
+            //debugLog.NewLineDebugText("Incorrect Format");
             MassFlowOut.GetComponentInChildren<Image>().sprite = FormatPNG;
         }
 
@@ -186,7 +181,7 @@ public class FloatingPanel : MonoBehaviour
             //if (OutputTempInput == OutputTempAnswer)
             {
                 //Debug.Log("Output Temperature: Correct");
-                debugLog.NewLineDebugText("Output Temperature: Correct");
+                //debugLog.NewLineDebugText("Output Temperature: Correct");
                 OutputTemp.GetComponentInChildren<Image>().sprite = CorrectPNG;
                 OutputTemp.GetComponentInChildren<InputField>().interactable = false;
                 OutputOne.text = "T2 = " + OutputTempAnswer.ToString() + " \u00B0C";
@@ -195,14 +190,14 @@ public class FloatingPanel : MonoBehaviour
             else
             {
                 //Debug.Log("Output Temperature: Incorrect");
-                debugLog.NewLineDebugText("Output Temperature: Incorrect");
+                //debugLog.NewLineDebugText("Output Temperature: Incorrect");
                 OutputTemp.GetComponentInChildren<Image>().sprite = IncorrectPNG;
             }
         }
         else
         {
             //Debug.Log("Incorrect Format");
-            debugLog.NewLineDebugText("Incorrect Format");
+            //debugLog.NewLineDebugText("Incorrect Format");
             OutputTemp.GetComponentInChildren<Image>().sprite = FormatPNG;
         }
 
@@ -211,7 +206,7 @@ public class FloatingPanel : MonoBehaviour
             // Update game state
             GameStateController.GameStateTwo = true;
             //Debug.Log("GameStateTwo: " + GameStateController.GameStateTwo.ToString());
-            debugLog.NewLineDebugText("GameStateTwo: " + GameStateController.GameStateTwo.ToString());
+            //debugLog.NewLineDebugText("GameStateTwo: " + GameStateController.GameStateTwo.ToString());
         }
     }
 }

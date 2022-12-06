@@ -16,6 +16,7 @@ TagManager:
   - Red Cube
   - Intro Cube
   - Intro Sphere
+  - Question Info
   layers:
   - Default
   - TransparentFX
